@@ -31,5 +31,5 @@ mkdir -p /opt/app-root/runtime
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc
 mvn install  
-mv target/*.jar  /opt/app-root/runtime/
+mv target/*.*ar  /opt/app-root/runtime/
 
