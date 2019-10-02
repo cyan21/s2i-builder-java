@@ -9,5 +9,5 @@
 
 #exec asdf -p 8080
 BUILD_RESULT_PATH=/opt/app-root/build_result
-java -jar $BUILD_RESULT_PATH/$(ls $BUILD_RESULT_PATH/*[0-9].jar)
+java -jar $(ls $BUILD_RESULT_PATH/*[0-9].jar)
 
