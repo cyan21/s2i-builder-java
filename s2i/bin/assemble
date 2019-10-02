@@ -31,5 +31,6 @@ mkdir -p $BUILD_RESULT_PATH
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc
 mvn install  
-mv target/* $BUILD_RESULT_PATH
+cd target && tar czvf build_result.tar.gz *
+mv * "$BUILD_RESULT_PATH/"
 
