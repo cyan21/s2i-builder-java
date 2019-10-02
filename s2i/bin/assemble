@@ -7,6 +7,8 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 
+BUILD_RESULT_PATH=/opt/app-root/build_result
+
 # If the 'my-builder' assemble script is executed with the '-h' flag, print the usage.
 if [[ "$1" == "-h" ]]; then
 	exec /usr/libexec/s2i/usage
@@ -19,17 +21,15 @@ if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
   mv /tmp/artifacts/. ./
 fi
 
-#git clone https://github.com/cyan21/springBoot_RestService.git
-
 echo "---> Installing application source..."
 cp -Rf /tmp/src/. ./
 
 pwd 
 
-mkdir -p /opt/app-root/runtime
+mkdir -p $BUILD_RESULT_PATH 
 
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc
 mvn install  
-mv target/*.*ar  /opt/app-root/runtime/
+mv target/* $BUILD_RESULT_PATH
 
