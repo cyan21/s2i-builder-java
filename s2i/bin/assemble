@@ -31,6 +31,11 @@ mkdir -p $BUILD_RESULT_PATH
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc
 mvn install  
-cd target && tar czvf build_result.tar.gz *
-mv * "$BUILD_RESULT_PATH/"
+
+echo "---> Packing up maven artifact from maven cache..."
+cd /opt/app-root/src/.m2/repository/ && \
+tar czvf build_result.tar.gz org/ych && \
+
+echo "---> Moving build result to $BUILD_RESULT_PATH/"
+mv build_result.tar.gz /opt/app-root/src/target/* "$BUILD_RESULT_PATH/"
 
