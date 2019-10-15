@@ -19,15 +19,13 @@ LABEL io.k8s.description="Platform for building springboot apps" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,openjdk-0.0.1,"
 
-
-#COPY java-1.8.0-openjdk-1.8.0.222.b03-1.el7.x86_64.rpm /opt/ 
-
 RUN yum install -y java-1.8.0-openjdk-devel &&  \
     yum clean all -y
 
-#RUN mkdir -p "/opt/java/jdk-${JAVA_VERSION}" && \
-#    tar -xzf /opt/jdk_1.8-131.tar.gz -C "/opt/java/jdk-${JAVA_VERSION}/" && \
-#    chown -R root:root /opt/java/ && \
+# installing JFrog CLI
+RUN curl -fL https://getcli.jfrog.io | sh && \
+    chmod 755 jfrog && \
+    mv jfrog /usr/local/bin/
 
 RUN curl "http://mirrors.whoishostingthis.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" | tar -xz -C /usr/local/ && \
     chown -R root:root /usr/local/apache-maven-${MAVEN_VERSION}
@@ -56,4 +54,4 @@ EXPOSE 8080
 # TODO: Set the default CMD for the image
 # CMD ["/usr/libexec/s2i/usage"]
 #ENTRYPOINT ["mvn --version"]
-CMD ["mvn --version"]
+CMD ["mvn --version && jfrog --version"]
