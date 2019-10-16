@@ -1,3 +1,4 @@
+# ONLY WORKS WITH ARTIFACTORY 
 
 # Description
 
@@ -60,6 +61,8 @@ Once the image has finished building, the command *s2i usage my-builder* will pr
 
 #### Testing the builder image
 Add the source code to test the builder image in test/test-app/ folder
+
+Configure the test/test-app/env file with your Artifactory setup
 
 The builder image can be tested using the following commands:
 ```
