@@ -33,3 +33,18 @@ echo "---> Building application from source..."
 mvn install  
 
 echo "END OF BUILD"
+
+if [ -z $PACK_APP ]; then
+  echo "---> Packing up maven artifact from maven cache..."
+  cd /opt/app-root/src/.m2/repository/ && \
+  tar czvf build_result.tar.gz org/ych && \
+  echo "---> Moving build result to $BUILD_RESULT_PATH/"
+  mv build_result.tar.gz /opt/app-root/src/target/* "$BUILD_RESULT_PATH/"
+else 
+  echo "---> Moving application to target folder..."
+#  mv /opt/app-root/src/target/${PACK_APP}.* "$BUILD_RESULT_PATH/"
+  ls -l  /opt/app-root/src/.m2/repository/${APP_PATH:org/springframework/gs-rest-service/0.1.1-SNAPSHOT
+}/${PACK_APP}.*
+  mv /opt/app-root/src/.m2/repository/${APP_PATH:org/springframework/gs-rest-service/0.1.1-SNAPSHOT
+}/${PACK_APP}.* "$BUILD_RESULT_PATH/"
+fi
