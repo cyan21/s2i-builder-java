@@ -41,6 +41,6 @@ if [ -z $PACK_APP ]; then
   mv build_result.tar.gz /opt/app-root/src/target/* "$BUILD_RESULT_PATH/"
 else 
   echo "---> Moving application to target folder..."
-  mv /opt/app-root/src/target/mvn-app-*.jar "$BUILD_RESULT_PATH/"
+  mv /opt/app-root/src/target/*.jar "$BUILD_RESULT_PATH/"
 fi
 
