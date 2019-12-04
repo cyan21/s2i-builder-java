@@ -32,6 +32,7 @@ echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc
 mvn install  
 
+echo "END OF BUILD"
 
 if [ -z $PACK_APP ]; then
   echo "---> Packing up maven artifact from maven cache..."
@@ -42,6 +43,8 @@ if [ -z $PACK_APP ]; then
 else 
   echo "---> Moving application to target folder..."
 #  mv /opt/app-root/src/target/${PACK_APP}.* "$BUILD_RESULT_PATH/"
+  ls -l  /opt/app-root/src/.m2/repository/${APP_PATH:org/springframework/gs-rest-service/0.1.1-SNAPSHOT
+}/${PACK_APP}.*
   mv /opt/app-root/src/.m2/repository/${APP_PATH:org/springframework/gs-rest-service/0.1.1-SNAPSHOT
 }/${PACK_APP}.* "$BUILD_RESULT_PATH/"
 fi
