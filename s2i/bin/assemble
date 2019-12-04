@@ -41,6 +41,8 @@ if [ -z $PACK_APP ]; then
   mv build_result.tar.gz /opt/app-root/src/target/* "$BUILD_RESULT_PATH/"
 else 
   echo "---> Moving application to target folder..."
-  mv /opt/app-root/src/target/${PACK_APP}.* "$BUILD_RESULT_PATH/"
+#  mv /opt/app-root/src/target/${PACK_APP}.* "$BUILD_RESULT_PATH/"
+  mv /opt/app-root/src/.m2/repository/${APP_PATH:org/springframework/gs-rest-service/0.1.1-SNAPSHOT
+}/${PACK_APP}.* "$BUILD_RESULT_PATH/"
 fi
 
