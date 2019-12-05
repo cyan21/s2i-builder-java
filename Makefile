@@ -1,5 +1,5 @@
 #IMAGE_NAME = my-builder
-IMAGE_NAME = my-java-builder:0.0.1
+IMAGE_NAME = my-java-builder:0.0.2
 
 .PHONY: build
 build:
